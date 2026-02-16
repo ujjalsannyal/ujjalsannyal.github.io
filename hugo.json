@@ -3,6 +3,7 @@
    "languageCode": "en-us",
    "title": "Ujjal Sannyal",
    "theme": "hugo-theme-stack-master",
+   "publishDir": "docs",
    "pagination": {
       "pagerSize": 5
    },
