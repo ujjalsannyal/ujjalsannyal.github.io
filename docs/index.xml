@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome on Ujjal Sannyal</title><link>https://ujjalsannyal.dev/</link><description>Recent content in Welcome on Ujjal Sannyal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 15 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ujjalsannyal.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Optimizing React Performance: A Practical Guide</title><link>https://ujjalsannyal.dev/post/optimizing-react-performance/</link><pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.dev/post/optimizing-react-performance/</guid><description>&lt;h2 id="introduction"&gt;Introduction
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome on Ujjal Sannyal</title><link>https://ujjalsannyal.github.io/</link><description>Recent content in Welcome on Ujjal Sannyal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 15 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ujjalsannyal.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Optimizing React Performance: A Practical Guide</title><link>https://ujjalsannyal.github.io/post/optimizing-react-performance/</link><pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.github.io/post/optimizing-react-performance/</guid><description>&lt;h2 id="introduction"&gt;Introduction
 &lt;/h2&gt;&lt;p&gt;React is fast by default, but as applications grow, performance can become an issue. This guide covers practical optimization techniques I&amp;rsquo;ve used to improve React application performance.&lt;/p&gt;
 &lt;h2 id="understanding-react-rendering"&gt;Understanding React Rendering
 &lt;/h2&gt;&lt;p&gt;Before optimizing, understand how React renders:&lt;/p&gt;
@@ -807,7 +807,7 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;Have performance tips to share? Let&amp;rsquo;s discuss on &lt;a class="link" href="https://twitter.com/ujjalsannyal" target="_blank" rel="noopener"
- &gt;Twitter&lt;/a&gt;!&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Building a Real-Time Chat Application with WebSockets</title><link>https://ujjalsannyal.dev/post/realtime-chat-websockets/</link><pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.dev/post/realtime-chat-websockets/</guid><description>&lt;h2 id="introduction"&gt;Introduction
+ &gt;Twitter&lt;/a&gt;!&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Building a Real-Time Chat Application with WebSockets</title><link>https://ujjalsannyal.github.io/post/realtime-chat-websockets/</link><pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.github.io/post/realtime-chat-websockets/</guid><description>&lt;h2 id="introduction"&gt;Introduction
 &lt;/h2&gt;&lt;p&gt;Real-time communication has become an essential feature in modern web applications. In this post, I&amp;rsquo;ll walk you through building a scalable real-time chat application using WebSockets, Node.js, and React.&lt;/p&gt;
 &lt;h2 id="why-websockets"&gt;Why WebSockets?
 &lt;/h2&gt;&lt;p&gt;Traditional HTTP follows a request-response model, which isn&amp;rsquo;t ideal for real-time applications. WebSockets provide:&lt;/p&gt;
@@ -1197,7 +1197,7 @@
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;Have questions or suggestions? Feel free to reach out on &lt;a class="link" href="https://twitter.com/ujjalsannyal" target="_blank" rel="noopener"
  &gt;Twitter&lt;/a&gt; or &lt;a class="link" href="https://github.com/ujjalsannyal" target="_blank" rel="noopener"
- &gt;GitHub&lt;/a&gt;!&lt;/em&gt;&lt;/p&gt;</description></item><item><title>DevTools Pro - Browser Extension</title><link>https://ujjalsannyal.dev/projects/devtools-pro/</link><pubDate>Thu, 01 Feb 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.dev/projects/devtools-pro/</guid><description>&lt;h2 id="overview"&gt;Overview
+ &gt;GitHub&lt;/a&gt;!&lt;/em&gt;&lt;/p&gt;</description></item><item><title>DevTools Pro - Browser Extension</title><link>https://ujjalsannyal.github.io/projects/devtools-pro/</link><pubDate>Thu, 01 Feb 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.github.io/projects/devtools-pro/</guid><description>&lt;h2 id="overview"&gt;Overview
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;DevTools Pro&lt;/strong&gt; is a powerful browser extension that enhances the developer experience with advanced debugging tools, performance monitoring, and productivity features.&lt;/p&gt;
 &lt;h2 id="key-features"&gt;Key Features
 &lt;/h2&gt;&lt;h3 id="-advanced-network-inspector"&gt;🔍 Advanced Network Inspector
@@ -1367,7 +1367,7 @@
 &lt;/h2&gt;&lt;p&gt;Contributions are welcome! Check out the &lt;a class="link" href="https://github.com/ujjalsannyal/devtools-pro/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener"
  &gt;contributing guidelines&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Try DevTools Pro today and supercharge your development workflow!&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Microservices Architecture: Lessons Learned</title><link>https://ujjalsannyal.dev/post/microservices-lessons-learned/</link><pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.dev/post/microservices-lessons-learned/</guid><description>&lt;h2 id="introduction"&gt;Introduction
+&lt;p&gt;&lt;em&gt;Try DevTools Pro today and supercharge your development workflow!&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Microservices Architecture: Lessons Learned</title><link>https://ujjalsannyal.github.io/post/microservices-lessons-learned/</link><pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.github.io/post/microservices-lessons-learned/</guid><description>&lt;h2 id="introduction"&gt;Introduction
 &lt;/h2&gt;&lt;p&gt;After working with microservices architecture for the past few years, I&amp;rsquo;ve learned valuable lessons about what works, what doesn&amp;rsquo;t, and the trade-offs involved. This post shares practical insights from real-world experience.&lt;/p&gt;
 &lt;h2 id="the-good-benefits-we-actually-realized"&gt;The Good: Benefits We Actually Realized
 &lt;/h2&gt;&lt;h3 id="1-independent-deployment"&gt;1. Independent Deployment
@@ -1875,7 +1875,7 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;What&amp;rsquo;s your experience with microservices? Share your thoughts on &lt;a class="link" href="https://twitter.com/ujjalsannyal" target="_blank" rel="noopener"
- &gt;Twitter&lt;/a&gt;!&lt;/em&gt;&lt;/p&gt;</description></item><item><title>CloudSync - File Synchronization Service</title><link>https://ujjalsannyal.dev/projects/cloudsync/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.dev/projects/cloudsync/</guid><description>&lt;h2 id="overview"&gt;Overview
+ &gt;Twitter&lt;/a&gt;!&lt;/em&gt;&lt;/p&gt;</description></item><item><title>CloudSync - File Synchronization Service</title><link>https://ujjalsannyal.github.io/projects/cloudsync/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate><guid>https://ujjalsannyal.github.io/projects/cloudsync/</guid><description>&lt;h2 id="overview"&gt;Overview
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;CloudSync&lt;/strong&gt; is a high-performance, distributed file synchronization service that enables seamless file sharing across devices. Built with Go and gRPC, it handles millions of files with low latency and high reliability.&lt;/p&gt;
 &lt;h2 id="key-features"&gt;Key Features
 &lt;/h2&gt;&lt;h3 id="-high-performance"&gt;🚀 High Performance
