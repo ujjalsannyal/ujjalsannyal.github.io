@@ -1,0 +1,702 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="Proven techniques to make your React applications faster and more efficient"><title>Optimizing React Performance: A Practical Guide</title><link rel=canonical href=https://ujjalsannyal.dev/post/optimizing-react-performance/><link rel=stylesheet href=/scss/style.min.51098b80cc297c94c0f57786d4a04e7372774e5993b60facf53870128a79bf73.css><meta property='og:title' content="Optimizing React Performance: A Practical Guide"><meta property='og:description' content="Proven techniques to make your React applications faster and more efficient"><meta property='og:url' content='https://ujjalsannyal.dev/post/optimizing-react-performance/'><meta property='og:site_name' content='Ujjal Sannyal'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='React'><meta property='article:tag' content='JavaScript'><meta property='article:tag' content='Performance'><meta property='article:tag' content='Optimization'><meta property='article:tag' content='Web Development'><meta property='article:published_time' content='2024-02-15T00:00:00+00:00'><meta property='article:modified_time' content='2024-02-15T00:00:00+00:00'><meta name=twitter:site content="@@ujjalsannyal"><meta name=twitter:creator content="@@ujjalsannyal"><meta name=twitter:title content="Optimizing React Performance: A Practical Guide"><meta name=twitter:description content="Proven techniques to make your React applications faster and more efficient"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar.png width=640 height=640 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>👨‍💻</span></figure><div class=site-meta><h1 class=site-name><a href=/>Ujjal Sannyal</a></h1><h2 class=site-description>Full Stack Developer | Open Source Enthusiast | Problem Solver</h2></div></header><ol class=menu-social><li><a href=https://github.com/ujjalsannyal target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://linkedin.com/in/ujjalsannyal target=_blank title=LinkedIn rel=me><svg class="icon icon-tabler icon-tabler-brand-linkedin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8.01"/><line x1="12" y1="16" x2="12" y2="11"/><path d="M16 16v-3a2 2 0 00-4 0"/></svg></a></li><li><a href=https://twitter.com/ujjalsannyal target=_blank title=Twitter rel=me><svg class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84.0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About</span></a></li><li><a href=/page/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About Me</span></a></li><li><a href=/projects/><svg class="icon icon-tabler icon-tabler-code" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="7 8 3 12 7 16"/><polyline points="17 8 21 12 17 16"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+<span>Projects</span></a></li><li><a href=/page/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/page/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>Dark Mode</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav class=toc-nav id=TableOfContents><ol><li><a href=#introduction>Introduction</a></li><li><a href=#understanding-react-rendering>Understanding React Rendering</a></li><li><a href=#key-optimization-techniques>Key Optimization Techniques</a><ol><li><a href=#1-reactmemo-for-component-memoization>1. React.memo for Component Memoization</a></li><li><a href=#2-usememo-for-expensive-calculations>2. useMemo for Expensive Calculations</a></li><li><a href=#3-usecallback-for-function-memoization>3. useCallback for Function Memoization</a></li><li><a href=#4-code-splitting-with-reactlazy>4. Code Splitting with React.lazy</a></li><li><a href=#5-virtualization-for-long-lists>5. Virtualization for Long Lists</a></li><li><a href=#6-optimize-context-usage>6. Optimize Context Usage</a></li><li><a href=#7-debounce-expensive-operations>7. Debounce Expensive Operations</a></li><li><a href=#8-use-production-build>8. Use Production Build</a></li></ol></li><li><a href=#performance-measurement>Performance Measurement</a><ol><li><a href=#react-devtools-profiler>React DevTools Profiler</a></li><li><a href=#web-vitals>Web Vitals</a></li></ol></li><li><a href=#common-pitfalls>Common Pitfalls</a><ol><li><a href=#1-premature-optimization>1. Premature Optimization</a></li><li><a href=#2-incorrect-dependencies>2. Incorrect Dependencies</a></li><li><a href=#3-over-using-usememo>3. Over-using useMemo</a></li></ol></li><li><a href=#real-world-example>Real-World Example</a></li><li><a href=#performance-checklist>Performance Checklist</a></li><li><a href=#conclusion>Conclusion</a></li><li><a href=#resources>Resources</a></li></ol></nav></div></section></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-details><header class=article-category><a href=/categories/frontend/ style=background-color:#e1efbe;color:#303d0f>Frontend
+</a><a href=/categories/performance/ style=background-color:#beefe2;color:#0f3d32>Performance</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/optimizing-react-performance/>Optimizing React Performance: A Practical Guide</a></h2><h3 class=article-subtitle>Proven techniques to make your React applications faster and more efficient</h3></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2024-02-15T00:00:00Z>Feb 15, 2024</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>8 minutes read</time></div></footer></div></header><aside class=article-toc><details><summary><div class=article-toc-title><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6-6 6"/></svg>
+<span>Table of contents</span></div></summary><nav class=toc-nav><ol><li><a href=#introduction>Introduction</a></li><li><a href=#understanding-react-rendering>Understanding React Rendering</a></li><li><a href=#key-optimization-techniques>Key Optimization Techniques</a><ol><li><a href=#1-reactmemo-for-component-memoization>1. React.memo for Component Memoization</a></li><li><a href=#2-usememo-for-expensive-calculations>2. useMemo for Expensive Calculations</a></li><li><a href=#3-usecallback-for-function-memoization>3. useCallback for Function Memoization</a></li><li><a href=#4-code-splitting-with-reactlazy>4. Code Splitting with React.lazy</a></li><li><a href=#5-virtualization-for-long-lists>5. Virtualization for Long Lists</a></li><li><a href=#6-optimize-context-usage>6. Optimize Context Usage</a></li><li><a href=#7-debounce-expensive-operations>7. Debounce Expensive Operations</a></li><li><a href=#8-use-production-build>8. Use Production Build</a></li></ol></li><li><a href=#performance-measurement>Performance Measurement</a><ol><li><a href=#react-devtools-profiler>React DevTools Profiler</a></li><li><a href=#web-vitals>Web Vitals</a></li></ol></li><li><a href=#common-pitfalls>Common Pitfalls</a><ol><li><a href=#1-premature-optimization>1. Premature Optimization</a></li><li><a href=#2-incorrect-dependencies>2. Incorrect Dependencies</a></li><li><a href=#3-over-using-usememo>3. Over-using useMemo</a></li></ol></li><li><a href=#real-world-example>Real-World Example</a></li><li><a href=#performance-checklist>Performance Checklist</a></li><li><a href=#conclusion>Conclusion</a></li><li><a href=#resources>Resources</a></li></ol></nav></details></aside><section class=article-content><h2 id=introduction>Introduction</h2><p>React is fast by default, but as applications grow, performance can become an issue. This guide covers practical optimization techniques I&rsquo;ve used to improve React application performance.</p><h2 id=understanding-react-rendering>Understanding React Rendering</h2><p>Before optimizing, understand how React renders:</p><ol><li><strong>State/Props Change</strong> → Component re-renders</li><li><strong>Parent Re-renders</strong> → Children re-render</li><li><strong>Context Changes</strong> → All consumers re-render</li></ol><h2 id=key-optimization-techniques>Key Optimization Techniques</h2><h3 id=1-reactmemo-for-component-memoization>1. React.memo for Component Memoization</h3><p>Prevent unnecessary re-renders of functional components:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>memo</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Without memo - re-renders on every parent render
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>ExpensiveComponent</span> <span class=o>=</span> <span class=p>({</span> <span class=nx>data</span> <span class=p>})</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Rendering ExpensiveComponent&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=o>&lt;</span><span class=nx>div</span><span class=o>&gt;</span><span class=p>{</span><span class=cm>/* Complex rendering logic */</span><span class=p>}</span><span class=o>&lt;</span><span class=err>/div&gt;;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// With memo - only re-renders when props change
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>OptimizedComponent</span> <span class=o>=</span> <span class=nx>memo</span><span class=p>(({</span> <span class=nx>data</span> <span class=p>})</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Rendering OptimizedComponent&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=o>&lt;</span><span class=nx>div</span><span class=o>&gt;</span><span class=p>{</span><span class=cm>/* Complex rendering logic */</span><span class=p>}</span><span class=o>&lt;</span><span class=err>/div&gt;;</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Custom comparison function
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>MemoizedComponent</span> <span class=o>=</span> <span class=nx>memo</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>  <span class=p>({</span> <span class=nx>user</span> <span class=p>})</span> <span class=p>=&gt;</span> <span class=o>&lt;</span><span class=nx>div</span><span class=o>&gt;</span><span class=p>{</span><span class=nx>user</span><span class=p>.</span><span class=nx>name</span><span class=p>}</span><span class=o>&lt;</span><span class=err>/div&gt;,</span>
+</span></span><span class=line><span class=cl>  <span class=p>(</span><span class=nx>prevProps</span><span class=p>,</span> <span class=nx>nextProps</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Return true if props are equal (skip render)
+</span></span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>prevProps</span><span class=p>.</span><span class=nx>user</span><span class=p>.</span><span class=nx>id</span> <span class=o>===</span> <span class=nx>nextProps</span><span class=p>.</span><span class=nx>user</span><span class=p>.</span><span class=nx>id</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=2-usememo-for-expensive-calculations>2. useMemo for Expensive Calculations</h3><p>Cache computed values:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>useMemo</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>DataTable</span><span class=p>({</span> <span class=nx>items</span><span class=p>,</span> <span class=nx>filter</span> <span class=p>})</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ❌ Bad - recalculates on every render
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>filteredItems</span> <span class=o>=</span> <span class=nx>items</span><span class=p>.</span><span class=nx>filter</span><span class=p>(</span><span class=nx>item</span> <span class=p>=&gt;</span> 
+</span></span><span class=line><span class=cl>    <span class=nx>item</span><span class=p>.</span><span class=nx>name</span><span class=p>.</span><span class=nx>includes</span><span class=p>(</span><span class=nx>filter</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// ✅ Good - only recalculates when dependencies change
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>filteredItems</span> <span class=o>=</span> <span class=nx>useMemo</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Filtering items...&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>items</span><span class=p>.</span><span class=nx>filter</span><span class=p>(</span><span class=nx>item</span> <span class=p>=&gt;</span> <span class=nx>item</span><span class=p>.</span><span class=nx>name</span><span class=p>.</span><span class=nx>includes</span><span class=p>(</span><span class=nx>filter</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=p>[</span><span class=nx>items</span><span class=p>,</span> <span class=nx>filter</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>ul</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span><span class=nx>filteredItems</span><span class=p>.</span><span class=nx>map</span><span class=p>(</span><span class=nx>item</span> <span class=p>=&gt;</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=o>&lt;</span><span class=nx>li</span> <span class=nx>key</span><span class=o>=</span><span class=p>{</span><span class=nx>item</span><span class=p>.</span><span class=nx>id</span><span class=p>}</span><span class=o>&gt;</span><span class=p>{</span><span class=nx>item</span><span class=p>.</span><span class=nx>name</span><span class=p>}</span><span class=o>&lt;</span><span class=err>/li&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=p>))}</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/ul&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=3-usecallback-for-function-memoization>3. useCallback for Function Memoization</h3><p>Prevent function recreation:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>useCallback</span><span class=p>,</span> <span class=nx>memo</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>ParentComponent</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>count</span><span class=p>,</span> <span class=nx>setCount</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>(</span><span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>items</span><span class=p>,</span> <span class=nx>setItems</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>([]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// ❌ Bad - new function on every render
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>handleClick</span> <span class=o>=</span> <span class=p>(</span><span class=nx>id</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Clicked:&#39;</span><span class=p>,</span> <span class=nx>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// ✅ Good - same function reference
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>handleClick</span> <span class=o>=</span> <span class=nx>useCallback</span><span class=p>((</span><span class=nx>id</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Clicked:&#39;</span><span class=p>,</span> <span class=nx>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=p>[]);</span> <span class=c1>// Empty deps - never changes
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>handleDelete</span> <span class=o>=</span> <span class=nx>useCallback</span><span class=p>((</span><span class=nx>id</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setItems</span><span class=p>(</span><span class=nx>prev</span> <span class=p>=&gt;</span> <span class=nx>prev</span><span class=p>.</span><span class=nx>filter</span><span class=p>(</span><span class=nx>item</span> <span class=p>=&gt;</span> <span class=nx>item</span><span class=p>.</span><span class=nx>id</span> <span class=o>!==</span> <span class=nx>id</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=p>[]);</span> <span class=c1>// Safe because setItems is stable
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>div</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>button</span> <span class=nx>onClick</span><span class=o>=</span><span class=p>{()</span> <span class=p>=&gt;</span> <span class=nx>setCount</span><span class=p>(</span><span class=nx>count</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)}</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>Count</span><span class=o>:</span> <span class=p>{</span><span class=nx>count</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=err>/button&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span><span class=nx>items</span><span class=p>.</span><span class=nx>map</span><span class=p>(</span><span class=nx>item</span> <span class=p>=&gt;</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=o>&lt;</span><span class=nx>MemoizedItem</span>
+</span></span><span class=line><span class=cl>          <span class=nx>key</span><span class=o>=</span><span class=p>{</span><span class=nx>item</span><span class=p>.</span><span class=nx>id</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>          <span class=nx>item</span><span class=o>=</span><span class=p>{</span><span class=nx>item</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>          <span class=nx>onClick</span><span class=o>=</span><span class=p>{</span><span class=nx>handleClick</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>          <span class=nx>onDelete</span><span class=o>=</span><span class=p>{</span><span class=nx>handleDelete</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=o>/&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=p>))}</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/div&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>MemoizedItem</span> <span class=o>=</span> <span class=nx>memo</span><span class=p>(({</span> <span class=nx>item</span><span class=p>,</span> <span class=nx>onClick</span><span class=p>,</span> <span class=nx>onDelete</span> <span class=p>})</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Rendering item:&#39;</span><span class=p>,</span> <span class=nx>item</span><span class=p>.</span><span class=nx>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>div</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>span</span><span class=o>&gt;</span><span class=p>{</span><span class=nx>item</span><span class=p>.</span><span class=nx>name</span><span class=p>}</span><span class=o>&lt;</span><span class=err>/span&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>button</span> <span class=nx>onClick</span><span class=o>=</span><span class=p>{()</span> <span class=p>=&gt;</span> <span class=nx>onClick</span><span class=p>(</span><span class=nx>item</span><span class=p>.</span><span class=nx>id</span><span class=p>)}</span><span class=o>&gt;</span><span class=nx>View</span><span class=o>&lt;</span><span class=err>/button&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>button</span> <span class=nx>onClick</span><span class=o>=</span><span class=p>{()</span> <span class=p>=&gt;</span> <span class=nx>onDelete</span><span class=p>(</span><span class=nx>item</span><span class=p>.</span><span class=nx>id</span><span class=p>)}</span><span class=o>&gt;</span><span class=nx>Delete</span><span class=o>&lt;</span><span class=err>/button&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/div&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=4-code-splitting-with-reactlazy>4. Code Splitting with React.lazy</h3><p>Load components only when needed:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>lazy</span><span class=p>,</span> <span class=nx>Suspense</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ❌ Bad - loads everything upfront
+</span></span></span><span class=line><span class=cl><span class=kr>import</span> <span class=nx>Dashboard</span> <span class=nx>from</span> <span class=s1>&#39;./Dashboard&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kr>import</span> <span class=nx>Settings</span> <span class=nx>from</span> <span class=s1>&#39;./Settings&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kr>import</span> <span class=nx>Reports</span> <span class=nx>from</span> <span class=s1>&#39;./Reports&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ✅ Good - loads on demand
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>Dashboard</span> <span class=o>=</span> <span class=nx>lazy</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=kr>import</span><span class=p>(</span><span class=s1>&#39;./Dashboard&#39;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>Settings</span> <span class=o>=</span> <span class=nx>lazy</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=kr>import</span><span class=p>(</span><span class=s1>&#39;./Settings&#39;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>Reports</span> <span class=o>=</span> <span class=nx>lazy</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=kr>import</span><span class=p>(</span><span class=s1>&#39;./Reports&#39;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>App</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>Router</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>Suspense</span> <span class=nx>fallback</span><span class=o>=</span><span class=p>{</span><span class=o>&lt;</span><span class=nx>LoadingSpinner</span> <span class=o>/&gt;</span><span class=p>}</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=o>&lt;</span><span class=nx>Routes</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>          <span class=o>&lt;</span><span class=nx>Route</span> <span class=nx>path</span><span class=o>=</span><span class=s2>&#34;/dashboard&#34;</span> <span class=nx>element</span><span class=o>=</span><span class=p>{</span><span class=o>&lt;</span><span class=nx>Dashboard</span> <span class=o>/&gt;</span><span class=p>}</span> <span class=o>/&gt;</span>
+</span></span><span class=line><span class=cl>          <span class=o>&lt;</span><span class=nx>Route</span> <span class=nx>path</span><span class=o>=</span><span class=s2>&#34;/settings&#34;</span> <span class=nx>element</span><span class=o>=</span><span class=p>{</span><span class=o>&lt;</span><span class=nx>Settings</span> <span class=o>/&gt;</span><span class=p>}</span> <span class=o>/&gt;</span>
+</span></span><span class=line><span class=cl>          <span class=o>&lt;</span><span class=nx>Route</span> <span class=nx>path</span><span class=o>=</span><span class=s2>&#34;/reports&#34;</span> <span class=nx>element</span><span class=o>=</span><span class=p>{</span><span class=o>&lt;</span><span class=nx>Reports</span> <span class=o>/&gt;</span><span class=p>}</span> <span class=o>/&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=o>&lt;</span><span class=err>/Routes&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=err>/Suspense&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/Router&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=5-virtualization-for-long-lists>5. Virtualization for Long Lists</h3><p>Render only visible items:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>FixedSizeList</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react-window&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>VirtualizedList</span><span class=p>({</span> <span class=nx>items</span> <span class=p>})</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>Row</span> <span class=o>=</span> <span class=p>({</span> <span class=nx>index</span><span class=p>,</span> <span class=nx>style</span> <span class=p>})</span> <span class=p>=&gt;</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>div</span> <span class=nx>style</span><span class=o>=</span><span class=p>{</span><span class=nx>style</span><span class=p>}</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span><span class=nx>items</span><span class=p>[</span><span class=nx>index</span><span class=p>].</span><span class=nx>name</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/div&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>FixedSizeList</span>
+</span></span><span class=line><span class=cl>      <span class=nx>height</span><span class=o>=</span><span class=p>{</span><span class=mi>600</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>      <span class=nx>itemCount</span><span class=o>=</span><span class=p>{</span><span class=nx>items</span><span class=p>.</span><span class=nx>length</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>      <span class=nx>itemSize</span><span class=o>=</span><span class=p>{</span><span class=mi>50</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>      <span class=nx>width</span><span class=o>=</span><span class=s2>&#34;100%&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span><span class=nx>Row</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/FixedSizeList&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// For 10,000 items:
+</span></span></span><span class=line><span class=cl><span class=c1>// Without virtualization: Renders 10,000 DOM nodes
+</span></span></span><span class=line><span class=cl><span class=c1>// With virtualization: Renders ~20 DOM nodes (visible + buffer)
+</span></span></span></code></pre></td></tr></table></div></div><h3 id=6-optimize-context-usage>6. Optimize Context Usage</h3><p>Avoid unnecessary context re-renders:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// ❌ Bad - entire context re-renders on any change
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>AppContext</span> <span class=o>=</span> <span class=nx>createContext</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>AppProvider</span><span class=p>({</span> <span class=nx>children</span> <span class=p>})</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>user</span><span class=p>,</span> <span class=nx>setUser</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>(</span><span class=kc>null</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>theme</span><span class=p>,</span> <span class=nx>setTheme</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>(</span><span class=s1>&#39;light&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>settings</span><span class=p>,</span> <span class=nx>setSettings</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>({});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>AppContext</span><span class=p>.</span><span class=nx>Provider</span> <span class=nx>value</span><span class=o>=</span><span class=p>{{</span> <span class=nx>user</span><span class=p>,</span> <span class=nx>setUser</span><span class=p>,</span> <span class=nx>theme</span><span class=p>,</span> <span class=nx>setTheme</span><span class=p>,</span> <span class=nx>settings</span><span class=p>,</span> <span class=nx>setSettings</span> <span class=p>}}</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span><span class=nx>children</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/AppContext.Provider&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ✅ Good - split contexts by concern
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>UserContext</span> <span class=o>=</span> <span class=nx>createContext</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>ThemeContext</span> <span class=o>=</span> <span class=nx>createContext</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>SettingsContext</span> <span class=o>=</span> <span class=nx>createContext</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>AppProvider</span><span class=p>({</span> <span class=nx>children</span> <span class=p>})</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>user</span><span class=p>,</span> <span class=nx>setUser</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>(</span><span class=kc>null</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>theme</span><span class=p>,</span> <span class=nx>setTheme</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>(</span><span class=s1>&#39;light&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>settings</span><span class=p>,</span> <span class=nx>setSettings</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>({});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>UserContext</span><span class=p>.</span><span class=nx>Provider</span> <span class=nx>value</span><span class=o>=</span><span class=p>{{</span> <span class=nx>user</span><span class=p>,</span> <span class=nx>setUser</span> <span class=p>}}</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>ThemeContext</span><span class=p>.</span><span class=nx>Provider</span> <span class=nx>value</span><span class=o>=</span><span class=p>{{</span> <span class=nx>theme</span><span class=p>,</span> <span class=nx>setTheme</span> <span class=p>}}</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=o>&lt;</span><span class=nx>SettingsContext</span><span class=p>.</span><span class=nx>Provider</span> <span class=nx>value</span><span class=o>=</span><span class=p>{{</span> <span class=nx>settings</span><span class=p>,</span> <span class=nx>setSettings</span> <span class=p>}}</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>          <span class=p>{</span><span class=nx>children</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=o>&lt;</span><span class=err>/SettingsContext.Provider&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=err>/ThemeContext.Provider&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/UserContext.Provider&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=7-debounce-expensive-operations>7. Debounce Expensive Operations</h3><p>Limit execution frequency:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>useState</span><span class=p>,</span> <span class=nx>useCallback</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>debounce</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;lodash&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>SearchComponent</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>results</span><span class=p>,</span> <span class=nx>setResults</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>([]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// ❌ Bad - API call on every keystroke
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>handleSearch</span> <span class=o>=</span> <span class=p>(</span><span class=nx>query</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fetch</span><span class=p>(</span><span class=sb>`/api/search?q=</span><span class=si>${</span><span class=nx>query</span><span class=si>}</span><span class=sb>`</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>      <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>res</span> <span class=p>=&gt;</span> <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>      <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>setResults</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// ✅ Good - debounced API calls
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>handleSearch</span> <span class=o>=</span> <span class=nx>useCallback</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=nx>debounce</span><span class=p>((</span><span class=nx>query</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nx>fetch</span><span class=p>(</span><span class=sb>`/api/search?q=</span><span class=si>${</span><span class=nx>query</span><span class=si>}</span><span class=sb>`</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>res</span> <span class=p>=&gt;</span> <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>setResults</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=mi>300</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=p>[]</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>input</span>
+</span></span><span class=line><span class=cl>      <span class=nx>type</span><span class=o>=</span><span class=s2>&#34;text&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=nx>onChange</span><span class=o>=</span><span class=p>{(</span><span class=nx>e</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>handleSearch</span><span class=p>(</span><span class=nx>e</span><span class=p>.</span><span class=nx>target</span><span class=p>.</span><span class=nx>value</span><span class=p>)}</span>
+</span></span><span class=line><span class=cl>      <span class=nx>placeholder</span><span class=o>=</span><span class=s2>&#34;Search...&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=8-use-production-build>8. Use Production Build</h3><p>Always use production builds in production:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># Development build (slow, with warnings)</span>
+</span></span><span class=line><span class=cl>npm start
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Production build (fast, optimized)</span>
+</span></span><span class=line><span class=cl>npm run build
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Analyze bundle size</span>
+</span></span><span class=line><span class=cl>npm run build -- --stats
+</span></span><span class=line><span class=cl>npx webpack-bundle-analyzer build/bundle-stats.json
+</span></span></code></pre></td></tr></table></div></div><h2 id=performance-measurement>Performance Measurement</h2><h3 id=react-devtools-profiler>React DevTools Profiler</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>Profiler</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>onRenderCallback</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>  <span class=nx>id</span><span class=p>,</span> <span class=c1>// component identifier
+</span></span></span><span class=line><span class=cl>  <span class=nx>phase</span><span class=p>,</span> <span class=c1>// &#34;mount&#34; or &#34;update&#34;
+</span></span></span><span class=line><span class=cl>  <span class=nx>actualDuration</span><span class=p>,</span> <span class=c1>// time spent rendering
+</span></span></span><span class=line><span class=cl>  <span class=nx>baseDuration</span><span class=p>,</span> <span class=c1>// estimated time without memoization
+</span></span></span><span class=line><span class=cl>  <span class=nx>startTime</span><span class=p>,</span> <span class=c1>// when React began rendering
+</span></span></span><span class=line><span class=cl>  <span class=nx>commitTime</span><span class=p>,</span> <span class=c1>// when React committed the update
+</span></span></span><span class=line><span class=cl>  <span class=nx>interactions</span> <span class=c1>// Set of interactions
+</span></span></span><span class=line><span class=cl><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=sb>`</span><span class=si>${</span><span class=nx>id</span><span class=si>}</span><span class=sb> (</span><span class=si>${</span><span class=nx>phase</span><span class=si>}</span><span class=sb>) took </span><span class=si>${</span><span class=nx>actualDuration</span><span class=si>}</span><span class=sb>ms`</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>App</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>Profiler</span> <span class=nx>id</span><span class=o>=</span><span class=s2>&#34;App&#34;</span> <span class=nx>onRender</span><span class=o>=</span><span class=p>{</span><span class=nx>onRenderCallback</span><span class=p>}</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>Dashboard</span> <span class=o>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/Profiler&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=web-vitals>Web Vitals</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>getCLS</span><span class=p>,</span> <span class=nx>getFID</span><span class=p>,</span> <span class=nx>getFCP</span><span class=p>,</span> <span class=nx>getLCP</span><span class=p>,</span> <span class=nx>getTTFB</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;web-vitals&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>sendToAnalytics</span><span class=p>({</span> <span class=nx>name</span><span class=p>,</span> <span class=nx>delta</span><span class=p>,</span> <span class=nx>id</span> <span class=p>})</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// Send to analytics service
+</span></span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>name</span><span class=p>,</span> <span class=nx>delta</span><span class=p>,</span> <span class=nx>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>getCLS</span><span class=p>(</span><span class=nx>sendToAnalytics</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>getFID</span><span class=p>(</span><span class=nx>sendToAnalytics</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>getFCP</span><span class=p>(</span><span class=nx>sendToAnalytics</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>getLCP</span><span class=p>(</span><span class=nx>sendToAnalytics</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>getTTFB</span><span class=p>(</span><span class=nx>sendToAnalytics</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=common-pitfalls>Common Pitfalls</h2><h3 id=1-premature-optimization>1. Premature Optimization</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// ❌ Don&#39;t optimize everything
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>MemoizedSimpleComponent</span> <span class=o>=</span> <span class=nx>memo</span><span class=p>(({</span> <span class=nx>text</span> <span class=p>})</span> <span class=p>=&gt;</span> <span class=o>&lt;</span><span class=nx>div</span><span class=o>&gt;</span><span class=p>{</span><span class=nx>text</span><span class=p>}</span><span class=o>&lt;</span><span class=err>/div&gt;);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ✅ Only optimize when needed
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>SimpleComponent</span> <span class=o>=</span> <span class=p>({</span> <span class=nx>text</span> <span class=p>})</span> <span class=p>=&gt;</span> <span class=o>&lt;</span><span class=nx>div</span><span class=o>&gt;</span><span class=p>{</span><span class=nx>text</span><span class=p>}</span><span class=o>&lt;</span><span class=err>/div&gt;;</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=2-incorrect-dependencies>2. Incorrect Dependencies</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// ❌ Bad - missing dependencies
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>fetchData</span> <span class=o>=</span> <span class=nx>useCallback</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>fetch</span><span class=p>(</span><span class=sb>`/api/data?id=</span><span class=si>${</span><span class=nx>userId</span><span class=si>}</span><span class=sb>`</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>},</span> <span class=p>[]);</span> <span class=c1>// userId not in deps!
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ✅ Good - correct dependencies
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>fetchData</span> <span class=o>=</span> <span class=nx>useCallback</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>fetch</span><span class=p>(</span><span class=sb>`/api/data?id=</span><span class=si>${</span><span class=nx>userId</span><span class=si>}</span><span class=sb>`</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>},</span> <span class=p>[</span><span class=nx>userId</span><span class=p>]);</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=3-over-using-usememo>3. Over-using useMemo</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// ❌ Unnecessary - simple calculation
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>doubled</span> <span class=o>=</span> <span class=nx>useMemo</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=nx>count</span> <span class=o>*</span> <span class=mi>2</span><span class=p>,</span> <span class=p>[</span><span class=nx>count</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ✅ Better - just calculate it
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>doubled</span> <span class=o>=</span> <span class=nx>count</span> <span class=o>*</span> <span class=mi>2</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=real-world-example>Real-World Example</h2><p>Here&rsquo;s a complete example combining multiple techniques:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>React</span><span class=p>,</span> <span class=p>{</span> <span class=nx>useState</span><span class=p>,</span> <span class=nx>useMemo</span><span class=p>,</span> <span class=nx>useCallback</span><span class=p>,</span> <span class=nx>memo</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>FixedSizeList</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;react-window&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>UserList</span> <span class=o>=</span> <span class=nx>memo</span><span class=p>(({</span> <span class=nx>users</span><span class=p>,</span> <span class=nx>onUserClick</span> <span class=p>})</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>searchTerm</span><span class=p>,</span> <span class=nx>setSearchTerm</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>(</span><span class=s1>&#39;&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>[</span><span class=nx>sortBy</span><span class=p>,</span> <span class=nx>setSortBy</span><span class=p>]</span> <span class=o>=</span> <span class=nx>useState</span><span class=p>(</span><span class=s1>&#39;name&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// Memoize filtered and sorted users
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>processedUsers</span> <span class=o>=</span> <span class=nx>useMemo</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Processing users...&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>users</span>
+</span></span><span class=line><span class=cl>      <span class=p>.</span><span class=nx>filter</span><span class=p>(</span><span class=nx>user</span> <span class=p>=&gt;</span> 
+</span></span><span class=line><span class=cl>        <span class=nx>user</span><span class=p>.</span><span class=nx>name</span><span class=p>.</span><span class=nx>toLowerCase</span><span class=p>().</span><span class=nx>includes</span><span class=p>(</span><span class=nx>searchTerm</span><span class=p>.</span><span class=nx>toLowerCase</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>      <span class=p>)</span>
+</span></span><span class=line><span class=cl>      <span class=p>.</span><span class=nx>sort</span><span class=p>((</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>a</span><span class=p>[</span><span class=nx>sortBy</span><span class=p>].</span><span class=nx>localeCompare</span><span class=p>(</span><span class=nx>b</span><span class=p>[</span><span class=nx>sortBy</span><span class=p>]));</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=p>[</span><span class=nx>users</span><span class=p>,</span> <span class=nx>searchTerm</span><span class=p>,</span> <span class=nx>sortBy</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// Memoize event handlers
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>handleSearch</span> <span class=o>=</span> <span class=nx>useCallback</span><span class=p>((</span><span class=nx>e</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setSearchTerm</span><span class=p>(</span><span class=nx>e</span><span class=p>.</span><span class=nx>target</span><span class=p>.</span><span class=nx>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=p>[]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>handleSort</span> <span class=o>=</span> <span class=nx>useCallback</span><span class=p>((</span><span class=nx>field</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setSortBy</span><span class=p>(</span><span class=nx>field</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=p>[]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// Virtualized row renderer
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>Row</span> <span class=o>=</span> <span class=nx>useCallback</span><span class=p>(({</span> <span class=nx>index</span><span class=p>,</span> <span class=nx>style</span> <span class=p>})</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kr>const</span> <span class=nx>user</span> <span class=o>=</span> <span class=nx>processedUsers</span><span class=p>[</span><span class=nx>index</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>div</span> <span class=nx>style</span><span class=o>=</span><span class=p>{</span><span class=nx>style</span><span class=p>}</span> <span class=nx>onClick</span><span class=o>=</span><span class=p>{()</span> <span class=p>=&gt;</span> <span class=nx>onUserClick</span><span class=p>(</span><span class=nx>user</span><span class=p>)}</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span><span class=nx>user</span><span class=p>.</span><span class=nx>name</span><span class=p>}</span> <span class=o>-</span> <span class=p>{</span><span class=nx>user</span><span class=p>.</span><span class=nx>email</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=err>/div&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=p>[</span><span class=nx>processedUsers</span><span class=p>,</span> <span class=nx>onUserClick</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>div</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>input</span>
+</span></span><span class=line><span class=cl>        <span class=nx>type</span><span class=o>=</span><span class=s2>&#34;text&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>value</span><span class=o>=</span><span class=p>{</span><span class=nx>searchTerm</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=nx>onChange</span><span class=o>=</span><span class=p>{</span><span class=nx>handleSearch</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=nx>placeholder</span><span class=o>=</span><span class=s2>&#34;Search users...&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=o>/&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>button</span> <span class=nx>onClick</span><span class=o>=</span><span class=p>{()</span> <span class=p>=&gt;</span> <span class=nx>handleSort</span><span class=p>(</span><span class=s1>&#39;name&#39;</span><span class=p>)}</span><span class=o>&gt;</span><span class=nx>Sort</span> <span class=nx>by</span> <span class=nx>Name</span><span class=o>&lt;</span><span class=err>/button&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>button</span> <span class=nx>onClick</span><span class=o>=</span><span class=p>{()</span> <span class=p>=&gt;</span> <span class=nx>handleSort</span><span class=p>(</span><span class=s1>&#39;email&#39;</span><span class=p>)}</span><span class=o>&gt;</span><span class=nx>Sort</span> <span class=nx>by</span> <span class=nx>Email</span><span class=o>&lt;</span><span class=err>/button&gt;</span>
+</span></span><span class=line><span class=cl>      
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=nx>FixedSizeList</span>
+</span></span><span class=line><span class=cl>        <span class=nx>height</span><span class=o>=</span><span class=p>{</span><span class=mi>600</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=nx>itemCount</span><span class=o>=</span><span class=p>{</span><span class=nx>processedUsers</span><span class=p>.</span><span class=nx>length</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=nx>itemSize</span><span class=o>=</span><span class=p>{</span><span class=mi>50</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=nx>width</span><span class=o>=</span><span class=s2>&#34;100%&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span><span class=nx>Row</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>      <span class=o>&lt;</span><span class=err>/FixedSizeList&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=err>/div&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=k>default</span> <span class=nx>UserList</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=performance-checklist>Performance Checklist</h2><ul><li><input disabled type=checkbox> Use React DevTools Profiler to identify slow components</li><li><input disabled type=checkbox> Implement code splitting for large bundles</li><li><input disabled type=checkbox> Memoize expensive calculations with useMemo</li><li><input disabled type=checkbox> Memoize callbacks passed to child components</li><li><input disabled type=checkbox> Use React.memo for components that render often</li><li><input disabled type=checkbox> Virtualize long lists</li><li><input disabled type=checkbox> Debounce/throttle expensive operations</li><li><input disabled type=checkbox> Optimize images (lazy loading, WebP format)</li><li><input disabled type=checkbox> Use production build</li><li><input disabled type=checkbox> Monitor bundle size</li><li><input disabled type=checkbox> Measure Web Vitals</li></ul><h2 id=conclusion>Conclusion</h2><p>React performance optimization is about finding the right balance. Don&rsquo;t optimize prematurely, but don&rsquo;t ignore performance issues either. Use the React DevTools Profiler to identify bottlenecks, then apply targeted optimizations.</p><p>Remember:</p><ul><li><strong>Measure first</strong> - use profiling tools</li><li><strong>Optimize strategically</strong> - focus on actual bottlenecks</li><li><strong>Test thoroughly</strong> - ensure optimizations don&rsquo;t break functionality</li><li><strong>Monitor continuously</strong> - performance can degrade over time</li></ul><h2 id=resources>Resources</h2><ul><li><a class=link href=https://react.dev/reference/react/Profiler target=_blank rel=noopener>React Profiler API</a></li><li><a class=link href=https://react.dev/reference/react/memo target=_blank rel=noopener>React.memo Documentation</a></li><li><a class=link href=https://web.dev/vitals/ target=_blank rel=noopener>Web Vitals</a></li><li><a class=link href=https://react-window.vercel.app/ target=_blank rel=noopener>React Window</a></li></ul><hr><p><em>Have performance tips to share? Let&rsquo;s discuss on <a class=link href=https://twitter.com/ujjalsannyal target=_blank rel=noopener>Twitter</a>!</em></p></section><footer class=article-footer><section class=article-tags><a href=/tags/react/>React</a>
+<a href=/tags/javascript/>JavaScript</a>
+<a href=/tags/performance/>Performance</a>
+<a href=/tags/optimization/>Optimization</a>
+<a href=/tags/web-development/>Web Development</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><footer class=site-footer><section class=copyright>&copy;
+2024 -
+2026 Ujjal Sannyal</section><section class=powerby>Building innovative solutions with code<br>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><script type=module>
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script></main></div><script type=text/javascript src=/ts/main.acaf849f2b273f6a8368a58b001f336738d0c948d92e79b116467d0c7515f932.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
