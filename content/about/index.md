@@ -3,11 +3,6 @@ title: "About Me"
 description: "Learn more about Ujjal Sannyal - Full Stack Developer"
 date: 2024-01-15
 slug: about
-menu:
-    main:
-        weight: -90
-        params:
-            icon: user
 ---
 
 ## Hi, I'm Ujjal Sannyal 👋
