@@ -7,16 +7,15 @@ slug: about
 
 ## Hi, I'm Ujjal Sannyal 👋
 
-I'm a passionate **Full Stack Developer** with a love for building elegant solutions to complex problems. My journey in software development has been driven by curiosity, continuous learning, and a desire to create meaningful impact through technology.
+I'm a passionate **Full-Stack Solutions Architect & Project Manager** with over 12 years of experience leading the design, planning, and delivery of scalable web applications and enterprise-grade systems. Proven track record of architecting robust technical solutions using modern frameworks and cloud-native technologies, while driving cross-functional teams to deliver high-quality outcomes aligned with business goals.
 
 ### 🚀 What I Do
 
 I specialize in building scalable web applications and distributed systems. My expertise spans across:
 
-- **Backend Development**: Building robust APIs and microservices
-- **Frontend Development**: Creating responsive and intuitive user interfaces
-- **DevOps & Cloud**: Deploying and managing applications in cloud environments
-- **Open Source**: Contributing to and maintaining open-source projects
+- **Solution Architecture**: Designing resilient, scalable system blueprints — from API contracts and microservices topology to frontend composition strategies and data flow
+- **Technical Leadership**: Guiding cross-functional engineering teams through complex delivery cycles, ensuring alignment between technical decisions and business outcomes
+- **Cloud & Infrastructure Strategy**: Defining cloud-native deployment strategies, governance frameworks, and CI/CD standards across AWS environments
 
 ### 💻 Technical Skills
 
@@ -28,7 +27,7 @@ I specialize in building scalable web applications and distributed systems. My e
 
 **Tools & Technologies:**
 - Docker & Kubernetes
-- AWS, GCP, Azure
+- AWS
 - PostgreSQL, MongoDB, Redis
 - Git, CI/CD, GitHub Actions
 
