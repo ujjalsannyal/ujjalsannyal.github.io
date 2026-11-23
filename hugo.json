@@ -140,6 +140,15 @@
             "params": {
                "icon": "search"
             }
+         },
+         {
+            "identifier": "posts",
+            "name": "Posts",
+            "url": "/posts/",
+            "weight": -60,
+            "params": {
+               "icon": "search"
+            }
          }
       ],
       "social": [
@@ -149,14 +158,6 @@
             "url": "https://github.com/ujjalsannyal",
             "params": {
                "icon": "brand-github"
-            }
-         },
-         {
-            "identifier": "twitter",
-            "name": "Twitter",
-            "url": "https://twitter.com/ujjalsannyal",
-            "params": {
-               "icon": "brand-twitter"
             }
          },
          {
@@ -204,5 +205,10 @@
          "lineNumbersInTable": true,
          "tabWidth": 4
       }
-   }
+   },
+   "caches": {
+    "images": {
+      "dir": ":cacheDir/images"
+    }
+  }
 }
