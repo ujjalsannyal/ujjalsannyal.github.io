@@ -147,7 +147,7 @@
             "url": "/posts/",
             "weight": -40,
             "params": {
-               "icon": "posts"
+               "icon": "archives"
             }
          }
       ],
