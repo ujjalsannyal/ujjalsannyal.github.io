@@ -71,7 +71,7 @@ I'm always interested in collaborating on exciting projects or discussing new id
 
 - ☕ Coffee enthusiast - I believe the best code is written with a good cup of coffee
 - 📚 Avid reader of tech blogs and documentation
-- 🎮 Enjoy cooking in my free time
+- 🍳 Enjoy cooking in my free time
 - 🌍 Love traveling and experiencing different cultures
 
 ---

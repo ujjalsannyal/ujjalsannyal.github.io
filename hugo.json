@@ -135,7 +135,7 @@
          {
             "identifier": "posts",
             "name": "Posts",
-            "url": "/post/",
+            "url": "/posts/",
             "weight": -40,
             "params": {
                "icon": "archives"
