@@ -124,15 +124,6 @@
             }
          },
          {
-            "identifier": "archives",
-            "name": "Archives",
-            "url": "/archives/",
-            "weight": -70,
-            "params": {
-               "icon": "archives"
-            }
-         },
-         {
             "identifier": "search",
             "name": "Search",
             "url": "/search/",
@@ -144,10 +135,10 @@
          {
             "identifier": "posts",
             "name": "Posts",
-            "url": "/posts/",
-            "weight": -60,
+            "url": "/post/",
+            "weight": -40,
             "params": {
-               "icon": "search"
+               "icon": "archives"
             }
          }
       ],
